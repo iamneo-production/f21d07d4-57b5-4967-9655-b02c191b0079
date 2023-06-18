@@ -52,14 +52,26 @@ public class AuthController {
     }
 
     @PostMapping("/user/signup")
-    public String saveUser(UserModel user){
-        userRepository.save(user);
-        return "User added";
+    public String saveUser(@RequestBody UserModel user){
+        try{
+            user.setUserRole("user");
+            userRepository.save(user);
+            return "User added";
+        }
+        catch(Exception ex){
+        }
+        return "Same User";
     }
 
     @PostMapping("/admin/signup")
-    public String saveAdmin(UserModel user){
-        userRepository.save(user);
-        return "Admin added";
+    public String saveAdmin(@RequestBody UserModel user){
+        try{
+            user.setUserRole("admin");
+            userRepository.save(user);
+            return "Admin added";
+        }
+        catch(Exception ex){
+        }
+        return "Same Admin";
     }
 }
