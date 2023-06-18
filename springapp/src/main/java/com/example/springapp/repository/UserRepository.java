@@ -6,5 +6,5 @@ import com.example.springapp.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, String> {
-    
+    UserModel findByEmail(String email);
 }

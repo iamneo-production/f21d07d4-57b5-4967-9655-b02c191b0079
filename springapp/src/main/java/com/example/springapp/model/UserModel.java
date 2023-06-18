@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Table(name="users")
 public class UserModel {
     
-    private String userRole;
-    @Column(nullable = false, unique = true)
-    private String email;
     @Id
     private String username;
-    private String mobileNumber;
+    @Column(nullable = false, unique = true)
+    private String email;
     private String password;
+    private String mobileNumber;
+    private String userRole;
 
     public UserModel() {
     }
