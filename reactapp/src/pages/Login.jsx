@@ -53,7 +53,6 @@ export default function Login() {
   const handleSubmit = async (event) => {
     setOpen(true);
     event.preventDefault();
-    //const data = new FormData(event.currentTarget);
   };
 
   const handleClose = (event, reason) => {
