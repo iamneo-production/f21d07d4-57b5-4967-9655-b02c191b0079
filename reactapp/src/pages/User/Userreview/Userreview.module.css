@@ -1,0 +1,30 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.leftPanel {
+  margin: 16px;
+}
+
+.leftPanel textarea {
+  width: 500px;
+  height: 300px;
+}
+
+.rightPanel {
+  margin: 16px;
+}
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 16px;
+}
+
+.submitButton {
+  float: right;
+}

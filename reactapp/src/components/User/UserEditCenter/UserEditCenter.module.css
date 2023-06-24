@@ -1,0 +1,11 @@
+.container {
+  width: 400px;
+  background-color: #2b2929;
+  padding: 16px;
+  box-sizing: border-box;
+  color: white;
+  border-radius: 8px;
+  margin-left: 500px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 2px grey;
+}

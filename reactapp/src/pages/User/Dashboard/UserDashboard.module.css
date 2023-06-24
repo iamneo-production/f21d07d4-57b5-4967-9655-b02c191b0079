@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  justify-content: space-around;
+}
+
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  position: absolute;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px gray;
+  top: 200px;
+  left: 0;
+}
+
+.card {
+  width: 35%;
+}
+
+.form {
+  width: 40%;
+  margin-right: 32px;
+  height: 80%;
+}
+
+.modal {
+  margin-top: 5%;
+  margin-left: 5%;
+  outline: none;
+}
+
+.closeButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
