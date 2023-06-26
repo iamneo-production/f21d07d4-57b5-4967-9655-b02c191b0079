@@ -61,19 +61,19 @@ const AdminNavbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className={`nav-item ${styles.navItem}`}>
-                <Link className={`nav-link ${styles.navLink}`} to="/admin/home">
+                <Link id='adminCenterProfile' className={`nav-link ${styles.navLink}`} to="/admin/home">
                   <HomeIcon />
                   <span className={styles.navLinkText}>Home</span>
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link className={`nav-link ${styles.navLink}`} to="/admin/add-centre">
+                <Link id='adminAddCenter' className={`nav-link ${styles.navLink}`} to="/admin/add-centre">
                   <AddCircleOutlineIcon />
                   <span className={styles.navLinkText}>Add Centre</span>
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link className={`nav-link ${styles.navLink}`} to="/admin/bookings">
+                <Link id='BookingButton' className={`nav-link ${styles.navLink}`} to="/admin/bookings">
                   <ListAltIcon />
                   <span className={styles.navLinkText}>Bookings</span>
                 </Link>

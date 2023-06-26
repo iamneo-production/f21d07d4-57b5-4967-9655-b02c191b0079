@@ -44,7 +44,7 @@ const Slots = (props) => {
         {
             timeSlots.map( (item,index) =>{
                 const isAvailable = props.slotData[item.words];
-                return <p  style={{
+                return <p key={item.time} style={{
                     color:isAvailable?"green":"red",
                     textDecoration:isAvailable?"none":"line-through",
                     cursor:isAvailable?"pointer":"not-allowed",

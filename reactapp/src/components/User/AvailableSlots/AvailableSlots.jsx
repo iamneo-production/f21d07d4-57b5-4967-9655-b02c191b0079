@@ -1,11 +1,11 @@
 import Dates from './Dates';
 import { useState } from 'react';
-import Slots from './Slots';
+import Slots from './Slots.jsx'
 import styles from './AvailableSlots.module.css';
 function AvailableSlots(props){
 
     const slots = props.slots;
-
+    console.log(slots)
     const [slotList,setSlotList] = useState([...slots.map(slot=>{
       return {...slot,selected:false}
     })]);

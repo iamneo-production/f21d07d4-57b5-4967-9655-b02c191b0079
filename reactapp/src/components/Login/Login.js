@@ -65,11 +65,11 @@ export const Login = () => {
             </div>
             <TextField id="password" label="Enter password" name="password" type="password" />
             <br></br>
-            <button className="btn btn-dark mt-3" type="submit">Login</button>
+            <button id='loginButton' className="btn btn-dark mt-3" type="submit">Login</button>
             <ToastContainer/>
           </Form>
           <br />
-          <p>New User/Admin? <Link to="/signup">Signup</Link></p>
+          <p>New User/Admin? <Link id='signupLink' to="/signup">Signup</Link></p>
         </div>
       )}
     </Formik>

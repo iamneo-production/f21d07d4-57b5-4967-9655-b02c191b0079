@@ -81,7 +81,7 @@ export const Signup = () => {
             </FormControl>
             <TextField id="username" label="Name" name="name" type="text" />
             <TextField id="email" label="Email" name="email" type="text" />
-            <TextField id="mobile" label="Mobile Number" name="mobileNumber" type="text" />
+            <TextField id="mobileNumber" label="Mobile Number" name="mobileNumber" type="text" />
             <TextField id="password" label="Password" name="password" type="password" />
             <TextField
               id="confirmPassword"
@@ -89,13 +89,13 @@ export const Signup = () => {
               name="confirmPassword"
               type="password"
             />
-            <button className="btn btn-dark mt-3" type="submit">
+            <button id='submitButton' className="btn btn-dark mt-3" type="submit">
               Register
             </button>
           </Form>
           <br />
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account? <Link id='signinLink' to="/login">Login</Link>
           </p>
           <ToastContainer />
         </div>

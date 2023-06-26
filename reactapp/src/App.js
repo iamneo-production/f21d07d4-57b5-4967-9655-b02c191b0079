@@ -28,7 +28,6 @@ function App() {
         <Route path="/login" element={<LoginPage/>}></Route>
         
         
-
         <Route path="/admin" element={<AdminLayout/>}>
           <Route path="/admin/home" element={<AdminHomePage/>}></Route>
           <Route path="/admin/add-centre" element={<AdminAddCentrePage/>}></Route>
@@ -38,11 +37,11 @@ function App() {
 
         <Route path="/user" element={<UserLayOut/>}>
           <Route path='/user/home' element={<UserHomePage/>}></Route>
-          
-         
           <Route path='/user/EditCenter' element={<Usereditcenter/>}></Route>
           <Route path="/user/booking/slot" element={<AvailableSlots/>}></Route>
           <Route path="/user/payment" element={<PaymentCard/>}></Route>
+          <Route path='/user/Mybooking' element={<Userbooking/>}></Route>
+          <Route path='/user/dashboard' element={<UserDashboard/>}></Route>
           <Route path="/user/center/reviews/:centerId" element={<Userreview/>}></Route>
         </Route>
 

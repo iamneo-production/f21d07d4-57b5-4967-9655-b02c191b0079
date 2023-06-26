@@ -20,7 +20,7 @@ function AdminLayout() {
         <div className={styles.container}>
           <AdminNavbar/>
           <div className={styles.content}>
-            <h3 className={styles.greeting}>{`Hi, Admin`}</h3>
+            <h3 className={styles.greeting}>{`Welcome, Admin`}</h3>
             <Outlet />
           </div>
           <ToastContainer />
