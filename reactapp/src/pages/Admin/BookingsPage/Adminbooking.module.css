@@ -1,0 +1,24 @@
+.centreCardsContainer {
+  display: none;
+  display: contents;
+  gap: 16px;
+}
+.noBooking {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 45%;
+  font-size: 24px;
+}
+
+.modal {
+  margin-top: 5%;
+  margin-left: 5%;
+  outline: none;
+}
+
+.closeButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+}

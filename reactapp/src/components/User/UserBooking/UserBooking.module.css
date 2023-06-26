@@ -1,0 +1,9 @@
+.main p {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.main {
+  padding: 16px;
+  box-sizing: border-box;
+}
