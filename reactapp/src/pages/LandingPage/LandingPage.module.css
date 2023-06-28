@@ -1,0 +1,22 @@
+.image {
+  background-image: url("../../assets/vaccum.png");
+  width: 55%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  color: rgb(37, 33, 33);
+  background-color: rgb(243, 245, 247);
+}
+.element {
+  margin-left: 24px;
+  text-align: left;
+  width: 40%;
+}
