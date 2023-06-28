@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid gray;
+  box-shadow: 2px 2px 2px gray;
+  padding: 8px;
+  background-color: white;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.header {
+  text-align: left;
+}
+
+.header p {
+  color: gray;
+  font-size: 14px;
+}
+
+.body {
+  text-align: left;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
