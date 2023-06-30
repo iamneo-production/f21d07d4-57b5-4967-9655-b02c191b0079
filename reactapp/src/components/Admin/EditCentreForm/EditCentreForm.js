@@ -55,14 +55,14 @@ function EditCentreForm(props) {
                 <div className={styles.container}>
                     <h1 className="my-4 font-weight-bold-display-4">Edit Center</h1>
                     <Form>
-                        <TextField id="updateName" placeholder='Name' name="name" type="text" />
-                        <TextField id="updateNumber" placeholder="Enter the phone number" name="mobileNumber" type="text" />
-                        <TextField id="updateAddress" placeholder="Enter the address" name="address" type="text" />
-                        <TextField id="updateImageUrl" placeholder="Enter the image url" name="imgUrl" type="text" />
-                        <TextField id="updateEmail" placeholder="Enter the email id" name="email" type="email" />
-                        <TextField id="updateCentreDescription" placeholder="Give Description" name="description" type="textarea" />
+                        <TextField id="editName" placeholder='Name' name="name" type="text" />
+                        <TextField id="editNumber" placeholder="Enter the phone number" name="mobileNumber" type="text" />
+                        <TextField id="editAddress" placeholder="Enter the address" name="address" type="text" />
+                        <TextField id="editImageUrl" placeholder="Enter the image url" name="imgUrl" type="text" />
+                        <TextField id="editEmail" placeholder="Enter the email id" name="email" type="email" />
+                        <TextField id="editCentreDescription" placeholder="Give Description" name="description" type="textarea" />
                         <br></br>
-                        <button className="btn btn-dark mt-3" type="submit">update</button>
+                        <button id='updateButton'className="btn btn-dark mt-3" type="submit">update</button>
                     </Form>
                     <br />
                 </div>

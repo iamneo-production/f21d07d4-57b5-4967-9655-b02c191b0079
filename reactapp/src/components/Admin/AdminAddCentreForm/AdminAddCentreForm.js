@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import * as myaxios from '../../../api/myaxios';
 
 function AdminAddCentreForm() {
+
   const navigate = useNavigate();
 
   const validate = Yup.object({
@@ -65,7 +66,7 @@ function AdminAddCentreForm() {
             <TextField id="addEmail" label="Email" name="email" type="email" />
             <TextField id="addCentreDescription" label="Description" name="description" type="textarea" />
             <ErrorMessage name="description" component="div" className={styles.error} />
-            <button className={styles.button} type="submit">
+            <button className={styles.button} id="addButton" type="submit">
               Add Centre
             </button>
           </Form>

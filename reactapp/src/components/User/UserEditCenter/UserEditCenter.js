@@ -73,7 +73,7 @@ function EditCenter(props) {
                         <TextField id="editDateOfPurchase" placeholder="Enter the date of booking" name="bookingDate" type="date" label="booking Date" readonly="true"/>
                         <TextField  placeholder="Enter booking time" name="bookingTime" type="time" label="booking Time" readonly="true"/>
                         <br></br>
-                        <button className="btn btn-secondary mt-3" type="submit">update</button>
+                        <button id='updateBooking' className="btn btn-secondary mt-3" type="submit">update</button>
                         
                     </Form>
                     <br/>

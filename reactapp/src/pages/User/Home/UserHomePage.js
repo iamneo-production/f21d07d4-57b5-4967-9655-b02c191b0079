@@ -59,7 +59,7 @@ const UserHomePage = (props) => {
     <div>
         <div className={classes.searchBar}>
           <SearchIcon/>
-          <input onChange={(e)=>handleOnChange(e)} placeholder="Search by Name,City,Pincode"></input>
+          <input id='searchButton' onChange={(e)=>handleOnChange(e)} placeholder="Search by Name,City,Pincode"></input>
         </div>
         <br></br>
         <div className={classes.centreCardsContainer}>

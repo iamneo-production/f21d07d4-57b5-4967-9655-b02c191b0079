@@ -60,13 +60,13 @@ const Navbar = () => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul className="navbar-nav">
               <li className={`nav-item ${styles.navItem}`}>
-                <Link className={`nav-link ${styles.navLink}`} to="/user/home">
+                <Link id='HomeButton' className={`nav-link ${styles.navLink}`} to="/user/home">
                   <HomeIcon />
                   <span className={styles.navLinkText}>Home</span>
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link className={`nav-link ${styles.navLink}`} to="/user/mybooking">
+                <Link id='myBookingButton' className={`nav-link ${styles.navLink}`} to="/user/mybooking">
                   <EventNoteIcon />
                   <span className={styles.navLinkText}>My Bookings</span>
                 </Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
           <div className={`navbar-nav ml-auto ${styles.logout}`}>
             <span className={styles.logoutText}>Logout</span>
-            <IconButton color="inherit" onClick={handleOnClickLogout}>
+            <IconButton id='logout' color="inherit" onClick={handleOnClickLogout}>
               <LogoutIcon fontSize="large" />
             </IconButton>
           </div>
