@@ -2,11 +2,7 @@ import axios from "axios";
 
 import axiosObject from "../../src/api/bootapi"
 //app axios methods
-<<<<<<< HEAD
 const baseUrl = "https://8080-ebaadaacdbddddbdadcfbfbafdccbe.project.examly.io";
-=======
-const baseUrl = "https://8080-ebaadaacdbddddbdadcfbfbafaabdddabdebfcccb.project.examly.io";
->>>>>>> 749c6a07bc3216a4c7398c0f89e436d99d1e7b2c
 
 export const login = async (val)=>{
     const res = await axios({
