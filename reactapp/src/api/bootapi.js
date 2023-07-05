@@ -1,5 +1,5 @@
 import { isJwtExpired } from 'jwt-check-expiration';
-const base_url = "https://8080-ebaadaacdbddddbdadcfbfbafaabdddabdebfcccb.project.examly.io";
+const base_url = "https://8080-fcdacaffdbdbbaabdadcfbfbafdccbe.project.examly.io";
 const axios = require('axios').default;
 
 // axois object

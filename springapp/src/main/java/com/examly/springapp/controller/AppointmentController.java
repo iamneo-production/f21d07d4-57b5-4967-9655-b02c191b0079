@@ -18,7 +18,7 @@ import java.util.Objects;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-public class AppointmentInfoController {
+public class AppointmentController {
     // properties
     @Autowired
     private AppointmentInfoService appointmentInfoService;
@@ -31,13 +31,13 @@ public class AppointmentInfoController {
     }
 
     // Return all appointments details
-    @GetMapping("/getAppointments")
+    @GetMapping("/admin/appointment")
     public List<AppointmentInfo> getAppointments() {
         return this.appointmentInfoService.allAppointments();
     }
 
     // Return all appointments details by UserId
-    @GetMapping("/getAppointments/{id}")
+    @GetMapping("/admin/appointment/{id}")
     public List<AppointmentInfo> getUserAppointments(@PathVariable String id) {
         long Id = Long.parseLong(id);
         return this.appointmentInfoService.getAppointmentByUserId(Id);
