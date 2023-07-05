@@ -1,0 +1,22 @@
+.centreCardsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.card {
+  min-width: 400px;
+}
+.searchBar {
+   margin: auto;
+  width: 60%;
+  padding: 4px;
+  border: 2px solid grey;
+  border-radius: 8px;
+}
+
+.searchBar input {
+  width: 95%;
+  border: none;
+  outline: none;
+}
