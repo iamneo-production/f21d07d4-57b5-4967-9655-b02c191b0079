@@ -1,14 +1,14 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { TextField } from "./TextField";
+import { TextField } from '../TextField';
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import * as Yup from "yup";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import * as myaxios from "../../api/myaxios";
+import * as myaxios from "../../../api/myaxios";
+import rocketImg from '../../../assets/rocket.png'
 
-export const Signup = () => {
+export default function Signup(){
   const validate = Yup.object({
     name: Yup.string().max(25, "Must be 15 characters or less").required("Required"),
     email: Yup.string().email("Email is invalid").required("Required"),
@@ -38,6 +38,9 @@ export const Signup = () => {
   };
 
   return (
+    <div className='container mt-3'>
+    <div className='row'>
+      <div className='col-md-5'>
     <Formik
       initialValues={{
         userType: "",
@@ -59,15 +62,15 @@ export const Signup = () => {
           <Form>
             <FormControl>
               <InputLabel id="user-type-label"
-                              sx={{
-                                marginTop: "35px",
-                                }}
-                >User-Type</InputLabel>
+                sx={{
+                  marginTop: "35px",
+                }}
+              >User-Type</InputLabel>
               <Select
                 sx={{
-                marginTop:5,        
-                width: 525,
-                height: 50,
+                  marginTop: 5,
+                  width: 525,
+                  height: 50,
                 }}
                 labelId="user-type-label"
                 id="admin/user"
@@ -79,27 +82,33 @@ export const Signup = () => {
                 <MenuItem value={"ADMIN"}>ADMIN</MenuItem>
               </Select>
             </FormControl>
-            <TextField id="username" label="Name" name="name" type="text" />
-            <TextField id="email" label="Email" name="email" type="text" />
-            <TextField id="mobileNumber" label="Mobile Number" name="mobileNumber" type="text" />
-            <TextField id="password" label="Password" name="password" type="password" />
+            <TextField data-testid="username" label="Name" name="name" type="text" />
+            <TextField data-testid="email" label="Email" name="email" type="text" />
+            <TextField data-testid="mobileNumber" label="Mobile Number" name="mobileNumber" type="text" />
+            <TextField data-testid="password" label="Password" name="password" type="password" />
             <TextField
               id="confirmPassword"
               label="Confirm Password"
               name="confirmPassword"
               type="password"
             />
-            <button id='submitButton' className="btn btn-dark mt-3" type="submit">
+            <button data-testid='submitButton' className="btn btn-dark mt-3" type="submit">
               Register
             </button>
           </Form>
           <br />
           <p>
-            Already have an account? <Link id='signinLink' to="/login">Login</Link>
+            Already have an account? <Link data-testid='signinLink' to="/login">Login</Link>
           </p>
           <ToastContainer />
         </div>
       )}
     </Formik>
+    </div>
+        <div className='col-md-7 my-auto'>
+          <img className="img-fluid w-100" src={rocketImg} alt='' />
+        </div>
+      </div>
+   </div>
   );
 };

@@ -8,7 +8,6 @@ import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 
 function UserCentreCard(props) {  
-
     const navigate = useNavigate();
 
     const handleOnClickAdd=()=>{
@@ -27,8 +26,8 @@ function UserCentreCard(props) {
             <img style={{width:'100%',height:'200px',objectFit:'fill'}}src={props.data.imgUrl} class="card-img-top" id="Grid1" alt="Vacuumservice"/>
         </div>
         <div class="card-body">
-            <h5 class="card-title">{props.data.name}</h5>
-            <p class="card-text"><LocationOnSharpIcon style={{fontSize:"small",color:"black",marginRight:"4px"}}/>{` ${props.data.address}, ${props.data.city}-${props.data.pincode}`}</p>
+            <h5 class="card-title" data-testid="centerName">{props.data.name}</h5>
+            <p class="card-text" data-testid="place"><LocationOnSharpIcon style={{fontSize:"small",color:"black",marginRight:"4px"}}/>{` ${props.data.address}, ${props.data.city}-${props.data.pincode}`}</p>
             <p class="card-text"><AccessTimeFilledSharpIcon style={{fontSize:"small",color:"black",marginRight:"4px"}}/> 10:00AM to 05:00PM</p>
             <p class="card-text"><PhoneAndroidSharpIcon style={{fontSize:"small",color:"black",marginRight:"4px"}}/>{` ${props.data.mobileNumber}`}</p>
             <p class="card-text"><EmailSharpIcon style={{fontSize:"small",color:"black",marginRight:"4px"}}/>{` ${props.data.email}`}</p>
