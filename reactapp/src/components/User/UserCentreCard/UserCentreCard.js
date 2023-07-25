@@ -7,19 +7,29 @@ import PhoneAndroidSharpIcon from '@mui/icons-material/PhoneAndroidSharp';
 import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 
+//The component takes props as input, which contains information about the service center to be displayed, 
+// such as name, address, mobile number, email, description, and availability of booking and slot selection options.
 function UserCentreCard(props) {  
     const navigate = useNavigate();
 
+    // handleOnClickAdd function is called when the user clicks on the "Book" button. It sets the service center details in local 
+    //storage and sets the isNewAppointment flag to true. This flag indicates that the booking is a new appointment, not an edit of an existing one.
     const handleOnClickAdd=()=>{
         localStorage.setItem("bookCenterDetails",JSON.stringify(props.data));
         localStorage.setItem("isNewAppointment","true");
         
     }
 
+    // handleOnClickReviews function is called when the user clicks on the "Reviews" button. 
+    // It navigates the user to the reviews page for the specific service center.
     const handleOnClickReviews = ()=>{
         navigate(`/user/center/reviews/${props.data.serviceCenterId}`);
     }
 
+    //conditionally renders buttons based on the props received:
+    // If enableOptions is true, it shows the "Book" button.
+    // If enableSlotButton is true, it shows the "Select Slot" button.
+    // If enableOptions is true, it shows the "Reviews" button
   return (
     <div className={`card ${styles.card}`} >
         <div>

@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminNavbar from '../../../components/Admin/AdminNavbar/AdminNavbar'
 import styles from './AdminLayout.module.css'; 
 
+//The AdminLayout component is a React functional component that serves as the layout for the admin dashboard. 
+//It includes the navigation bar (AdminNavbar component) at the top and the content area where other admin pages are rendered (using the Outlet component).
 function AdminLayout() {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();

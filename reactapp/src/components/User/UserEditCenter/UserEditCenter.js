@@ -6,6 +6,8 @@ import { updateBooking } from "../../../api/myaxios";
 import styles from './UserEditCenter.module.css';
 import { useNavigate } from "react-router-dom";
 
+//component takes props as input, which contains information about the appointment to be edited,
+//  such as product name, product model number, purchase date, problem statement, booking date, and booking time.
 function EditCenter(props) {
     const id = props.data.appointmentId;
     
@@ -25,9 +27,13 @@ function EditCenter(props) {
         bookingDate:Yup.string().required("Required"),
         bookingTime:Yup.string().required("Required")
     });
+
+    //handleOnSubmit function is called when the user submits the form to edit the appointment. 
+    // It makes an API call to update the appointment details in the database. If the update is successful, the user is navigated to the "My Booking" page.
     const handleOnSubmit = async (value) => {
         
         try {
+            //When the user clicks the "Update" button, the form is submitted, and the handleOnSubmit function is called to update the appointment details.
             const res = await updateBooking(value,editURL);
             alert('Updated Sucessfully');
             props.onClose(false);
@@ -40,7 +46,7 @@ function EditCenter(props) {
 
     
     return (
-        
+        // The form fields are pre-filled with the existing appointment details, allowing users to edit them.
         <Formik
             enableReinitialize
             initialValues={{
