@@ -6,8 +6,12 @@ import styles from './EditCentreForm.module.css';
 import {editCenter} from '../../../api/myaxios';
 function EditCentreForm(props) {
     const id = props.data.serviceCenterId;
+
+    //The editCenter function is imported from the '../../../api/myaxios' module, 
+    //which is likely used for making an HTTP request to edit/update a service center.
     const editURL = `editServiceCenter/${id}`;
     
+    //A validate object is created using the Yup library to define the form validation rules for each input field in the form. 
     const validate = Yup.object({
         name: Yup.string().max(25, 'Must be 15 characters or less')
             .required('Required'),
@@ -20,10 +24,13 @@ function EditCentreForm(props) {
         description: Yup.string().max(200, 'Must be 200 characters or less').required('Required')
     });
 
+    //It calls the editCenter function with the form values and the editURL 
+    //(constructed using the service center's ID) to make an HTTP PUT request to update the service center details.
     const handleOnSubmit = async (value) => {
         try {
             const res = await editCenter(value,editURL);
 
+            //If the update is successful, it stores the updated service center data in the local storage 
             localStorage.setItem('data',JSON.stringify(res.data));
             props.getCardtoEdit();
             alert('Updated Sucessfully');
@@ -35,6 +42,7 @@ function EditCentreForm(props) {
 
     return (
         <Formik
+        //The enableReinitialize prop is set to true to allow the form to be reinitialized with the initial values whenever they change.
             enableReinitialize
             initialValues={{
                 name: props.data.name,

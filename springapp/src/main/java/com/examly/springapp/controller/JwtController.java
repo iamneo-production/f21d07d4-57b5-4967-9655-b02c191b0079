@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class JwtController {
 
+    //he class uses Spring's dependency injection (@Autowired) to inject instances of 
+    // AuthenticationManager, UserService, JwtUserDetailsService, JwtUtil, and UserRepository.
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -37,11 +39,15 @@ public class JwtController {
     @Autowired
     private UserRepository userRepository;
 
-
+    //This method is responsible for authenticating a user and generating a JWT token for the authenticated user.
     @PostMapping("/authenticate")
+
+    // @RequestBody annotation is used to map the request body to the Login model, which contains the user's email and password.
     public ResponseEntity<?> createAuthenticationToken(@RequestBody Login authenticationRequest) throws Exception {
 
         try {
+            // authenticate method is called to verify the user's credentials, and if the user is authenticated successfully, 
+            // a JWT token is generated using the JwtUtil.
             authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
         }catch (UsernameNotFoundException e){
             e.printStackTrace();
@@ -59,6 +65,9 @@ public class JwtController {
 
         return ResponseEntity.ok(new JwtResponse(users,token));
     }
+
+    //This method is used internally to perform user authentication using the authenticationManager.
+    //It takes the user's email and password as arguments and attempts to authenticate the user using the UsernamePasswordAuthenticationToken.
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

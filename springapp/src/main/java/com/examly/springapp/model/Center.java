@@ -33,6 +33,8 @@ public class Center {
     private String email;
     private String description;
 
+    // @OneToMany annotation is used to specify a one-to-many relationship between Center and Slot entities.
+    // It indicates that one Center can have multiple Slot entities associated with it.
     @OneToMany(targetEntity = Slot.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "center_id")
     private List<Slot> slots;

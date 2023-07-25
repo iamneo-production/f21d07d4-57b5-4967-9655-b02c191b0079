@@ -16,14 +16,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+//This class is a Spring @RestController, which means it handles incoming HTTP requests and generates HTTP responses using Spring's RESTful support.
 @RestController
+
+//This allows cross-origin requests from "http://localhost:3000", making it accessible from a frontend application running on this domain.
 @CrossOrigin(origins = "http://localhost:3000")
 public class AppointmentController {
-    // properties
+    // he class uses Spring's dependency injection (@Autowired) to inject the AppointmentInfoService, which is a service class responsible for handling appointments. 
+    // It is used to manage appointments by calling methods of the service.
     @Autowired
     private AppointmentInfoService appointmentInfoService;
 
-    // Booking Appointment
+    // The class defines various methods annotated with @PostMapping, @GetMapping, @PutMapping, and @DeleteMapping annotations, 
+    // corresponding to different HTTP methods for booking, retrieving, updating, and deleting appointments, respectively.
     @PostMapping("/bookappointment")
     public AppointmentInfo addAppointment(@RequestBody AppointmentInfo appointmentInfo) {
         return this.appointmentInfoService.addAppointment(appointmentInfo);
@@ -50,6 +55,7 @@ public class AppointmentController {
         return this.appointmentInfoService.editAppointment(appointmentInfo, id);
     }
 
+    // Updating Payment Status
     @PutMapping("/payment/{id}")
     public AppointmentInfo editPayment(@PathVariable String id) {
         return this.appointmentInfoService.editPayment(Long.parseLong(id));
@@ -57,6 +63,9 @@ public class AppointmentController {
 
     // delete Service Center
     @DeleteMapping("/deleteAppointment/{id}")
+
+    //Handles HTTP DELETE requests to delete an appointment. It takes the appointment id as a path variable and calls the deleteAppointment method 
+    // of the AppointmentInfoService to delete the appointment.
     public String deleteAppointment(@PathVariable String id) throws ParseException {
         String data = "No data found";
         List<AppointmentInfo> appointmentinfo = getAppointments();

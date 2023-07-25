@@ -20,7 +20,8 @@ export default function Signup(){
       .oneOf([Yup.ref("password"), null], "Password must match")
       .required("Required"),
   });
-
+//This function is called when the signup form is submitted.
+//It uses myaxios.signup(values) to make an HTTP POST request to the server with the form values values.
   const handleOnSubmit = async (values) => {
     try {
       const res = await myaxios.signup(values);
