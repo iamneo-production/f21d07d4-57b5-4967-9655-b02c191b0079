@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .greeting {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3f51b5;
+    margin-bottom: 20px;
+  }
+  

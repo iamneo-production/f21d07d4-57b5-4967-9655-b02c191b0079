@@ -1,0 +1,71 @@
+.Card {
+        /* text-align: center; */
+       position: absolute;
+       top: 45%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+        /* margin-bottom: '-10%'; */
+        z-index: 2;
+        border: 2px solid transparent;
+        -webkit-box-shadow: -1px 8px 15px 0px rgba(0, 0, 0, 0.44);
+        -moz-box-shadow: -1px 8px 15px 0px rgba(0, 0, 0, 0.44);
+        box-shadow: -1px 8px 15px 0px rgba(0, 0, 0, 0.44);
+      }
+      
+      .Card-logo {
+        height: 40vmin;
+        pointer-events: none;
+      }
+      
+      @media (prefers-reduced-motion: no-preference) {
+        .Card-logo {
+          animation: App-logo-spin infinite 20s linear;
+        }
+      }
+      
+      .Card-header {
+        background-color: #282c34;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: white;
+      }
+      
+      .Card-link {
+        color: #61dafb;
+      }
+      
+      @keyframes Card-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+.bgimage{
+        background-image: url("../../assets/paymentPage.jpg") ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        filter: blur(7px);
+        -webkit-filter: blur(7px);
+}
+
+
+input {
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s;
+}
