@@ -77,3 +77,33 @@ function AdminAddCentreForm() {
 }
 
 export default AdminAddCentreForm;
+
+
+
+
+
+
+/*import React from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { TextField } from './TextField';
+import * as Yup from 'yup';
+import axios from 'axios';
+import styles from './AdminAddCentreForm.module.css';
+import { useNavigate } from 'react-router-dom';
+import * as myaxios from '../../../api/myaxios';
+import React from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { TextField } from './TextField';
+import * as Yup from 'yup';
+import axios from 'axios';
+import styles from './AdminAddCentreForm.module.css';
+import { useNavigate } from 'react-router-dom';
+import * as myaxios from '../../../api/myaxios';
+import React from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { TextField } from './TextField';
+import * as Yup from 'yup';
+import axios from 'axios';
+import styles from './AdminAddCentreForm.module.css';
+import { useNavigate } from 'react-router-dom';
+import * as myaxios from '../../../api/myaxios';*/
