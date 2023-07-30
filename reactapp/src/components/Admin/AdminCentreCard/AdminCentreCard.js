@@ -4,11 +4,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import {Link} from 'react-router-dom';
 import {deleteCenter} from "../../../api/myaxios";
+
+//This component is a functional component that receives props as its parameter. 
+//It represents a card displaying information about a service center.
 function AdminCentreCard(props) {
 
     const id = props.data.serviceCenterId;
+
+    //The deleteCenter function is imported from the '../../../api/myaxios' module, 
+    //which is likely used for making an HTTP request to delete a service center.
     const deleteURL = `deleteServiceCenter/${id}`;
 
+    // This function is called when the delete icon is clicked.
     const handleOnClickDelete = async()=>{
         try{
             if(window.confirm('Are you sure you want to delete?')){
@@ -22,10 +29,13 @@ function AdminCentreCard(props) {
         }
         
     }
+
+    // / This function is called when the edit icon is clicked. It stores the service center data (props.data) in the local storage
     const handleOnClickEdit = ()=>{
         localStorage.setItem("data",JSON.stringify(props.data));
     }
 
+    //The component returns JSX markup representing a card displaying information about the service center.
   return (
     <div className={`container, ${styles.main}`} style={props.style}>
         <div className="row">

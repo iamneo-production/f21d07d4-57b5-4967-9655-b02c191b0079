@@ -16,6 +16,11 @@ public class SlotServiceImpl implements SlotService {
     SlotRepository slotRepository;
 
     @Transactional
+
+    //    This method is used to edit an existing slot. It receives a Slot object containing the updated slot details.
+     //The method first retrieves the existing slot from the database using its slotId.
+    // Then, it updates the slot details (availability for each time slot) with the new values provided in the Slot object.
+    // Finally, it saves the updated slot to the database using the slotRepository.
     public void editSlot(Slot slot) {
 
         System.out.println("Edit slot called--------------------------------------------------");

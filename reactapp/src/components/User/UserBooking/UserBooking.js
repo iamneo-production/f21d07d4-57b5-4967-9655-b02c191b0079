@@ -6,6 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteBooking,fetchCenterById } from "../../../api/myaxios";
 import { toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
+//displays the details of a specific booking, such as the appointment ID, center name, product name, booking date, and booking time.
+ // It also provides options to edit or delete the booking, and a button to make a payment 
+ // if the booking date is in the future and the payment is not done yet.
 const Mybooking = (props) => {
 
   const navigate = useNavigate();
@@ -15,8 +19,9 @@ const Mybooking = (props) => {
   const id = props.data.appointmentId;
   const deleteURL = `deleteAppointment/${id}`;
 
+  // getcenterData function is called using the useEffect hook to fetch the details of the service center associated with the booking and update the state accordingly.
   function getcenterData(){
-    fetchCenterById(`getServiceCenter/${props.data.serviceCenterId}`)
+    fetchCenterById(`${props.data.serviceCenterId}`)
     .then(res=>res.data)
     .then(data=>setCenterData(data));
   }
@@ -25,6 +30,9 @@ const Mybooking = (props) => {
     getcenterData();
   },[])
 
+  // handleOnClickDelete function is called when the user clicks on the delete button for a booking. 
+  //It shows a confirmation dialog, and if the user confirms the deletion,   // it sends a request to the server to delete the booking.
+  // It also handles different response scenarios and shows appropriate toast messages for success or failure.
   const handleOnClickDelete = async()=>{
     try{
       if(window.confirm('Are you sure you want to delete?')){
@@ -47,10 +55,16 @@ const Mybooking = (props) => {
       alert("Could Not Delete Try Again");
   }
   }
+
+  //handleClickPay function is called when the user clicks on the pay button for a booking. 
+  // It sets the appointment ID in local storage and redirects the user to the payment page.
   const handleClickPay = (props) =>{
     localStorage.setItem('appointMentId',JSON.stringify(props));
     window.location.replace('/user/payment');
   }
+
+  //handleOnClickEdit function is called when the user clicks on the edit button for a booking. It sets the details of the service center and the booking 
+  // in local storage and sets the isNewAppointment flag to false. It then navigates the user to the dashboard page for editing the booking.
   const handleOnClickEdit = ()=>{
     localStorage.setItem("bookCenterDetails",JSON.stringify(centerData)); 
     localStorage.setItem("AppointmentDetails",JSON.stringify(props.data));
@@ -58,7 +72,7 @@ const Mybooking = (props) => {
     navigate("/user/dashboard");
 }
     return (
-      
+      // renders the table row with all the booking details and buttons for editing, deleting, and paying for the booking based on the booking date and payment status.
       <>
         <tr>
           <td>{props.data.appointmentId}</td>

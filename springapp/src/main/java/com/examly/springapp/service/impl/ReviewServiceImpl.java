@@ -15,12 +15,16 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewRepository reviewRepository;
 
     @Override
+    //This method is used to add a new review to the database. It saves the review in the database using the 
+    // reviewRepository and returns the saved review.
     public Review addReview(Review review) {
         this.reviewRepository.save(review);
         return review;
     }
 
     @Override
+    //This method is used to delete a review by its id. 
+    // It searches for the review with the specified id in the database, deletes it using the reviewRepository, and returns the deleted review.
     public Review deleteReview(long id) {
         List<Review> allReviews = this.reviewRepository.findAll();
         Review deletedReview = null;
@@ -34,6 +38,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    //This method is used to edit an existing review. 
+    // It updates the review content with the new content provided and saves the updated review to the database.
     public Review editReview(Review review, long id) {
 
         Optional<Review> tmp = reviewRepository.findById(id);
@@ -48,6 +54,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    //This method is used to fetch all the reviews associated with a particular service center by its centerId.
+    //  It searches for all reviews with the specified centerId in the database and returns a list of those reviews.
     public List<Review> fetchReviewsByCenterId(long centerId) {
         return this.reviewRepository.findByCenterServiceCenterId(centerId);
     }

@@ -13,7 +13,7 @@ import java.util.Objects;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
-    // properties
+    // he class uses Spring's dependency injection (@Autowired) to inject instances of UserService and PasswordEncoder.
     @Autowired
     private UserService userService;
 
@@ -52,7 +52,8 @@ public class UserController {
         return this.userService.updateUser(user);
     }
 
-    // delete user
+    // deleteUser: Handles HTTP DELETE requests for deleting a user. 
+    // It takes the user id as a path variable and calls the deleteUser method of the UserService to delete the user.
     @DeleteMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable String id) {
         return this.userService.deleteUser(Long.parseLong(id));

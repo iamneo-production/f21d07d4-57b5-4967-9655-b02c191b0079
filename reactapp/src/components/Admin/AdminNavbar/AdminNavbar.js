@@ -12,6 +12,8 @@ import styles from './AdminNavbar.module.css';
 const AdminNavbar = () => {
   const navigate = useNavigate();
 
+  //This function is called when the user clicks the "Logout" button. It performs the following tasks:
+  //Removes the user data from the local storage using localStorage.removeItem('user'), presumably to log out the user.
   const handleOnClickLogout = () => {
     localStorage.removeItem('user');
     setTimeout(() => {
@@ -20,6 +22,8 @@ const AdminNavbar = () => {
     navigate('/');
   };
 
+  //    The component defines a custom theme for certain MUI components using the createTheme function from MUI.
+  // The theme customization involves changing the link color on hover and adjusting the icon size.
   const theme = createTheme({
     components: {
       MuiLink: {

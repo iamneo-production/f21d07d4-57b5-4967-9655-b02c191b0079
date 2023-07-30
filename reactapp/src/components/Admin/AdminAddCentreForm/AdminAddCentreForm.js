@@ -11,6 +11,9 @@ function AdminAddCentreForm() {
 
   const navigate = useNavigate();
 
+  //Yup library to define the form validation rules for each input field in the form.
+  // These rules specify the required fields, max length, valid email format, valid phone number format, etc.
+
   const validate = Yup.object({
     name: Yup.string().max(25, 'Should be less than 15 characters').required('Name is required'),
     mobileNumber: Yup.string()
@@ -24,6 +27,7 @@ function AdminAddCentreForm() {
     description: Yup.string().max(100, 'Should not exceed 100 characters'),
   });
 
+  //make an HTTP POST request to the server, presumably to add a new service center with the form data (val).
   async function handleOnSubmit(val) {
     try {
       const res = await myaxios.addCenter(val);
@@ -34,7 +38,7 @@ function AdminAddCentreForm() {
       alert('Add Centre Failed');
     }
   }
-
+// component wraps the form and handles form state, validation, and form submission logic.
   return (
     <Formik
       initialValues={{
@@ -47,6 +51,8 @@ function AdminAddCentreForm() {
         email: '',
         description: '',
       }}
+
+      //The validationSchema prop is set to validate, which enforces the defined validation rules on the form inputs.
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
         handleOnSubmit(values);

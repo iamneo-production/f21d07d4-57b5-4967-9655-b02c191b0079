@@ -33,7 +33,11 @@ public class Center {
     private String email;
     private String description;
 
+    // @OneToMany annotation is used to specify a one-to-many relationship between Center and Slot entities.
+    // It indicates that one Center can have multiple Slot entities associated with it.
     @OneToMany(targetEntity = Slot.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    //The @JoinColumn annotation is used to specify the column that will be used for joining the two tables in the database.
     @JoinColumn(name = "center_id")
     private List<Slot> slots;
 
@@ -44,10 +48,13 @@ public class Center {
 
     // Mapping with AppointmentInfo Table
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+
+    ////The @JoinColumn annotation is used to specify the column that will be used for joining the two tables in the database.
     @JoinColumn(name = "service_center_ids", referencedColumnName = "serviceCenterId")
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
 
-    // slots initialization for every center
+    // This method is used to initialize the slots list of the Center entity with slots for 90 days from the current date. 
+    // It creates Slot objects and adds them to the slots list.
     public void initSlots() {
         LocalDate startDate = LocalDate.now();
         slots = new ArrayList<>();

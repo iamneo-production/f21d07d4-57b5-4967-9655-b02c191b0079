@@ -22,13 +22,13 @@ public class CenterController {
     }
 
     // view all Service Center
-    @GetMapping("/getServiceCenter")
+    @GetMapping("/admin/service-center")
     public List<Center> viewServiceCenter() {
         return this.serviceCenterService.viewCenter();
     }
 
     // get service center by id
-    @GetMapping("/getServiceCenter/{id}")
+    @GetMapping("/admin/service-center/{id}")
     public Center viewServiceCenter(@PathVariable("id") String id) {
         long centerId = Long.parseLong(id);
         return this.serviceCenterService.getCenter(centerId);

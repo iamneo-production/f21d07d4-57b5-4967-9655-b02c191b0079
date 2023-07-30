@@ -19,10 +19,14 @@ public class Review {
     String dateCreated;
     String reviewContent;
 
+    //indicates many-to-one relationships between `Review-Users and Review-Center, respectively.
     @ManyToOne
     Users user;
 
     @ManyToOne
+
+    //Cascading delete means that deleting a parent entity (in this case, a Review) 
+    //will automatically delete all its associated child entities (in this case, the Center) to maintain referential integrity.
     @OnDelete(action = OnDeleteAction.CASCADE)
     Center center;
 }

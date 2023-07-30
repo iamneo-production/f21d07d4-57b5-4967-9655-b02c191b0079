@@ -10,7 +10,8 @@ import styles from './UserNavbar.module.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+//handleOnClickLogout function is called when the user clicks the Logout button.
+//  It removes the user data from local storage and displays a success toast message. After that, it navigates the user to the homepage ("/").
   const handleOnClickLogout = () => {
     localStorage.removeItem('user');
     setTimeout(() => {

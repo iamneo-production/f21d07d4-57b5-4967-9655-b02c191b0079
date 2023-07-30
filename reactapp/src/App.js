@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
-import SignupPage from './pages/SignupPage/SignupPage';
-import LoginPage from './pages/LoginPage/LoginPage';
 import AdminHomePage from './pages/Admin/Home/AdminHomePage';
 import AdminAddCentrePage from './pages/Admin/AddCenter/AdminAddCentrePage';
 import AdminLayout from './pages/Admin/Layout/AdminLayout';
@@ -17,24 +15,22 @@ import Usereditcenter from './pages/User/EditAppoinment/Usereditcenter';
 import AvailableSlots from './components/User/AvailableSlots/AvailableSlots';
 import PaymentCard from './components/PaymentCard/PaymentCard';
 import Userreview from './pages/User/Userreview/Userreview';
+import Login from "./components/Auth/Login/Login"
+import Signup from "./components/Auth/Signup/Signup"
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
-        <Route path="/signup" element={<SignupPage/>}></Route>
-        <Route path="/login" element={<LoginPage/>}></Route>
-        
-        
+        <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
         <Route path="/admin" element={<AdminLayout/>}>
           <Route path="/admin/home" element={<AdminHomePage/>}></Route>
           <Route path="/admin/add-centre" element={<AdminAddCentrePage/>}></Route>
           <Route path="/admin/edit-center" element={<Centerprofilescreen/>}></Route>
           <Route path="/admin/bookings" element={<Adminbooking/>}></Route>
         </Route>
-
         <Route path="/user" element={<UserLayOut/>}>
           <Route path='/user/home' element={<UserHomePage/>}></Route>
           <Route path='/user/EditCenter' element={<Usereditcenter/>}></Route>

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import axiosObject from "../../src/api/bootapi"
 //app axios methods
-const baseUrl = "https://8080-ebaadaacdbddddbdadcfbfbafaabdddabdebfcccb.project.examly.io";
+const baseUrl = "https://8080-ebaadaacdbddddbdadcfbfbafdccbe.project.examly.io";
 
 export const login = async (val)=>{
     const res = await axios({
@@ -53,7 +53,7 @@ export const editCenter = async(val,editURL)=>{
 export const fetchAllCenter = async()=>{
     const res = await axiosObject({
         method:'get',
-        url:`/getServiceCenter`
+        url:`/admin/service-center`
       });
     return res;
 }
@@ -61,7 +61,7 @@ export const fetchAllCenter = async()=>{
 export const fetchCenterById = async(URL)=>{
     const res = await axiosObject({
         method:'GET',
-        url:`/${URL}`
+        url:`/admin/service-center/${URL}`
     });
     return res;
 }
@@ -98,7 +98,7 @@ export const updateBooking = async(val,editUrl)=>{
 export const fetchUserBookings = async(userId)=>{
     const res = await axiosObject({
         method:'get',
-        url:`/getAppointments/${userId}`,
+        url:`/admin/appointment/${userId}`,
         headers: {
           'Access-Control-Allow-Origin': true,
         }
@@ -108,7 +108,7 @@ export const fetchUserBookings = async(userId)=>{
 export const fetchAllBookings = async(userId)=>{
     const res = await axiosObject({
         method:'get',
-        url:`/getAppointments/`,
+        url:`/admin/appointment/`,
         headers: {
           'Access-Control-Allow-Origin': true,
         }

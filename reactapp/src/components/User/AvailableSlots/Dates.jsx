@@ -6,6 +6,8 @@ const Dates= (props) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     const fulldate = new Date(props.date);
+
+    //The constants day, date, year, and month are derived from the provided props.date value using the Date object.
     const day = weekdays[fulldate.getDay()];
     const date = fulldate.getDate();
     const year = fulldate.getFullYear();
