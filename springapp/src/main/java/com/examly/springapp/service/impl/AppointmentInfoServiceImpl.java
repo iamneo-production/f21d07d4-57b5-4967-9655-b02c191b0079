@@ -37,10 +37,6 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     private UserController userController;
 
     @Override
-    //This method is responsible for adding a new AppointmentInfo entity to the application.
-    // It first checks the availability of the time slot and updates the corresponding slot status accordingly.
-    // It saves the appointment information and associates it with the corresponding service center and user entities.
-    // The method returns the newly added AppointmentInfo entity.
     public AppointmentInfo addAppointment(AppointmentInfo appointmentInfo) {
 
         // adding Slot into appointmentInfo table
@@ -118,20 +114,11 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     }
 
     @Override
-
-    // This method retrieves a list of all AppointmentInfo entities from the application.
-    // It returns a list containing all the appointments in the system.
-    public List<AppointmentInfo> allAppointments() {    
+    public List<AppointmentInfo> allAppointments() {
         return this.appointmentInfoRepository.findAll();
     }
 
     @Override
-
-    //    This method is responsible for updating an existing AppointmentInfo entity in the application.
-    // It first finds the existing appointment using the given id.
-    // It then checks the availability of the time slot and updates the corresponding slot status accordingly.
-    // The method saves the updated appointment information and returns the updated AppointmentInfo entity.
-
     public AppointmentInfo editAppointment(AppointmentInfo appointmentInfo, String id) {
 
         Optional<AppointmentInfo> appointmentinfo = appointmentInfoRepository.findById(Long.parseLong(id));
@@ -175,16 +162,8 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     }
 
     @Override
-
-    //    This method is responsible for deleting an existing AppointmentInfo entity from the application.
-    // It first finds the existing appointment using the given id.
-    // It then updates the corresponding slot status to make the time slot available again.
-    // The method deletes the appointment from the database and returns the deleted AppointmentInfo entity.
     public AppointmentInfo deleteAppointment(long id) {
 
-
-        //The deleteAppointment method in the AppointmentInfoServiceImpl class 
-        // is responsible for deleting an existing appointment and making the corresponding time slot available again. 
         List<AppointmentInfo> appointmentinfo = allAppointments();
 
         AppointmentInfo appointmentInfo = new AppointmentInfo();
@@ -243,9 +222,6 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     }
 
     @Override
-    //his method retrieves a list of AppointmentInfo entities associated with a specific user.
-// It takes a long parameter id, which represents the id of the user.
-// The method returns a list containing all the appointments associated with the user.
     public List<AppointmentInfo> getAppointmentByUserId(long id) {
 
         List<Users> userList = userController.getUser();
@@ -258,7 +234,6 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
         return appointmentInfoList;
     }
 
-    //findSlot method in the AppointmentInfoServiceImpl class is responsible for finding the time slot associated with a given service center and booking date.
     public Slot findSlot(long centerId, String bookingDate) {
 
         Center center = centerService.getCenter(centerId);
@@ -275,7 +250,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
 
         return requiredSlot;
     }
-    //method used to update the status of a specific time slot based on the booking time. 
+
     public Slot toEditSlot(Slot slot, String bookingTime, boolean value) {
         if (slot != null) {
 
@@ -316,9 +291,6 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     }
 
     @Override
-    //    This method updates the payment status of an existing appointment to mark it as paid.
-    // It takes a long parameter id, which represents the id of the appointment to be updated.
-    // The method returns the updated AppointmentInfo entity.
     public AppointmentInfo editPayment(long id) {
         List<AppointmentInfo> appointments = allAppointments();
         AppointmentInfo appointment = new AppointmentInfo();
@@ -332,4 +304,3 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
         return appointment;
     }
 }
-

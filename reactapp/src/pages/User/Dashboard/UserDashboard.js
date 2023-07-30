@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import BookAppointmentForm from '../../../components/User/BookAppointmentForm/BookAppointmentForm'
 import styles from './UserDashboard.module.css';
@@ -57,7 +56,7 @@ function UserDashboard(props) {
     }
 
     //filtering slots base on dateList array
-    let filteredSlots = slots?.filter(item => {
+    let filteredSlots = slots.filter(item => {
       let flag = false;
       for(let date of dateList){
         if(date === item.date){

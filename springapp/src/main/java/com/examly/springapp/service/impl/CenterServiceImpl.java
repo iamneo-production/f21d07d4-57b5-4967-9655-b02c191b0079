@@ -27,16 +27,12 @@ public class CenterServiceImpl implements CenterService {
     // private AppointmentInfoService appointmentInfoService;
 
     @Override
-
-    //This method is used to add a new service center to the database. 
-    // It initializes the time slots for the new center using the initSlots method of the Center entity and then saves the center to the database.
     public Center addCenter(Center serviceCenter) {
         serviceCenter.initSlots();
         return this.serviceCenterRepository.save(serviceCenter);
     }
 
     @Override
-    //This method is used to retrieve a service center by its id. It searches for the center with the specified id in the database and returns it if found.
     public Center getCenter(long id) {
 
         Optional<Center> center = serviceCenterRepository.findById(id);
@@ -47,14 +43,11 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    //This method is used to retrieve all the service centers from the database. It returns a list of all service centers.
     public List<Center> viewCenter() {
         return this.serviceCenterRepository.findAll();
     }
 
     @Override
-    //This method is used to edit an existing service center. It updates the details of the center, such as name, mobile number, address, etc., 
-    // with the provided information.
     public Center editCenter(Center serviceCenter, Long id) {
 
         System.out.println("Edit center started------------------------------");
@@ -79,9 +72,6 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-
-    //This method is used to delete a service center by its id. 
-    // It also deletes all the reviews associated with the center using the reviewRepository. Additionally, it deletes the center from the database.
     public Center deleteCenter(long id) {
         List<Center> serviceCenters = viewCenter();
         reviewRepository.deleteByCenterServiceCenterId(id);

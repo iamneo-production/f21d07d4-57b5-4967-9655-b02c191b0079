@@ -16,7 +16,7 @@ const Mybooking = (props) => {
   const deleteURL = `deleteAppointment/${id}`;
 
   function getcenterData(){
-    fetchCenterById(`${props.data.serviceCenterId}`)
+    fetchCenterById(`getServiceCenter/${props.data.serviceCenterId}`)
     .then(res=>res.data)
     .then(data=>setCenterData(data));
   }

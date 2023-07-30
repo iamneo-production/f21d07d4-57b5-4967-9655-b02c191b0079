@@ -9,8 +9,6 @@ import * as myaxios from "../../../api/myaxios";
 import signinImg from "../../../assets/signin.jpg";
 
 export default function Login (){
-  //A validate object is created using the Yup library to define the form validation rules for each input field in the form. 
-  //These rules specify the required email format and minimum password length.
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string()
@@ -18,8 +16,6 @@ export default function Login (){
       .required("Password is required"),
   });
 
-  //This function is called when the login form is submitted.
-//It uses myaxios.login(val) to make an HTTP POST request to the server with the form values val.
   async function handleOnSubmit(val) {
     try {
       const res = await myaxios.login(val);
@@ -28,9 +24,6 @@ export default function Login (){
       if (res.data.users === "") {
         toast.error("INVALID CREDENTIAL");
       } else {
-
-        //If the login is successful and the user type is "USER" or "ADMIN," it stores the user data and JWT token in the local storage 
-        //and redirects the user to the respective home pages (/user/home or /admin/home).
         if (res.data.users.userType === "USER") {
           toast.success("WELCOME USER", {
             position: "top-center",
@@ -55,8 +48,6 @@ export default function Login (){
     }
   }
 
-  //The component returns JSX markup representing the login form and an image.
-//The login form includes two input fields for email and password, along with a submit button for login.
   return (
     <div className="container mt-3" 
     data-testid="loginBox">
