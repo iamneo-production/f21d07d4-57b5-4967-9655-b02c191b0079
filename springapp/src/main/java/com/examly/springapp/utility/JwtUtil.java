@@ -75,7 +75,6 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS512, secretKey).compact();
     }
 
-
     //his method takes a JWT token and a UserDetails object as input and validates the token. It checks if the token's username matches the user's 
     // username in the UserDetails and if the token has not expired.
     public Boolean validateToken(String token, UserDetails userDetails) {
