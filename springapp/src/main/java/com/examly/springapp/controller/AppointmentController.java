@@ -80,10 +80,4 @@ public class AppointmentController {
         return data;
     }
 
-    // updating Service Center
-    @PutMapping(value = "/editAppointmen/{id}")
-    public AppointmentInfo editAppointmen(@RequestBody AppointmentInfo appointmentInfo,
-            @PathVariable("id") String id) {
-        return this.appointmentInfoService.editAppointment(appointmentInfo, id);
-    }
 }
