@@ -14,7 +14,6 @@ function AdminCentreCard(props) {
     //The deleteCenter function is imported from the '../../../api/myaxios' module, 
     //which is likely used for making an HTTP request to delete a service center.
     const deleteURL = `deleteServiceCenter/${id}`;
-    
 
     // This function is called when the delete icon is clicked.
     const handleOnClickDelete = async()=>{
@@ -156,3 +155,7 @@ function AdminCentreCard(props) {
 }
 
 export default AdminCentreCard */
+
+
+
+
