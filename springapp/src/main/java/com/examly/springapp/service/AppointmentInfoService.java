@@ -2,8 +2,10 @@ package com.examly.springapp.service;
 
 import com.examly.springapp.model.AppointmentInfo;
 //import com.examly.springapp.model.Center;
+
 import java.util.List;
 
+// AppointmentInfoService interface declares several methods that define the contract for managing AppointmentInfo entities in the application. 
 public interface AppointmentInfoService {
     AppointmentInfo addAppointment(AppointmentInfo appointmentInfo);
 
