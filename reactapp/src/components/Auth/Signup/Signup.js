@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import * as myaxios from "../../../api/myaxios";
 import rocketImg from '../../../assets/rocket.png'
 
+
 export default function Signup(){
   const validate = Yup.object({
     name: Yup.string().max(25, "Must be 15 characters or less").required("Required"),
@@ -118,6 +119,8 @@ export default function Signup(){
 
 
 //Signup Page
+
+
 
 
 
