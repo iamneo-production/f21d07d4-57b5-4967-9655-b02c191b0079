@@ -1,173 +1,170 @@
-import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import { TextField } from './TextField';
+import React from "react";
+import { Formik, Form } from 'formik';
+import { TextField } from "./TextField";
 import * as Yup from 'yup';
-import axios from 'axios';
-import styles from './AdminAddCentreForm.module.css';
-import { useNavigate } from 'react-router-dom';
-import * as myaxios from '../../../api/myaxios';
+import styles from './EditCentreForm.module.css';
+import {editCenter} from '../../../api/myaxios';
+function EditCentreForm(props) {
+    const id = props.data.serviceCenterId;
 
-function AdminAddCentreForm() {
+    //The editCenter function is imported from the '../../../api/myaxios' module, 
+    //which is likely used for making an HTTP request to edit/update a service center.
+    const editURL = `editServiceCenter/${id}`;
+    
+    //A validate object is created using the Yup library to define the form validation rules for each input field in the form. 
+    const validate = Yup.object({
+        name: Yup.string().max(25, 'Must be 15 characters or less')
+            .required('Required'),
+        mobileNumber: Yup.string().required('Required').matches("^[0-9]{10}$", 'Phone number is not valid'),
+        address: Yup.string().max(100, 'Must be 100 characters or less').required('Required'),
+        imageURL: Yup.string().url('Invalid URL'),
+        email: Yup.string()
+            .email('Email is invalid')
+            .required('Required'),
+        description: Yup.string().max(200, 'Must be 200 characters or less').required('Required')
+    });
 
-  const navigate = useNavigate();
+    //It calls the editCenter function with the form values and the editURL 
+    //(constructed using the service center's ID) to make an HTTP PUT request to update the service center details.
+    const handleOnSubmit = async (value) => {
+        try {
+            const res = await editCenter(value,editURL);
 
-  //Yup library to define the form validation rules for each input field in the form.
-  // These rules specify the required fields, max length, valid email format, valid phone number format, etc.
-
-  const validate = Yup.object({
-    name: Yup.string().max(25, 'Should be less than 15 characters').required('Name is required'),
-    mobileNumber: Yup.string()
-      .matches("^[0-9]{10}$", 'Phone number is not valid')
-      .required('Required'),
-    address: Yup.string().max(50, 'Should be less than 50 characters').required('Required'),
-    city: Yup.string().required('City is a required field').max(25, 'Should be less than 25 characters'),
-    pincode: Yup.string().max(6, 'Invalid Pincode').min(6, 'Invalid Pincode').required('Pincode is a required field'),
-    imgUrl: Yup.string().url('Invalid URL'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    description: Yup.string().max(100, 'Should not exceed 100 characters'),
-  });
-
-  //make an HTTP POST request to the server, presumably to add a new service center with the form data (val).
-  async function handleOnSubmit(val) {
-    try {
-      const res = await myaxios.addCenter(val);
-      alert('Centre Added Successfully');
-      navigate('/admin/home');
-    } catch (error) {
-      console.log(error);
-      alert('Add Centre Failed');
+            //If the update is successful, it stores the updated service center data in the local storage 
+            localStorage.setItem('data',JSON.stringify(res.data));
+            props.getCardtoEdit();
+            alert('Updated Sucessfully');
+            window.location.replace("/admin/home");
+        } catch (err) {
+            alert("Error while updating")
+        }
     }
-  }
-// component wraps the form and handles form state, validation, and form submission logic.
-  return (
-    <Formik
-      initialValues={{
-        name: '',
-        mobileNumber: '',
-        address: '',
-        city: '',
-        pincode: '',
-        imgUrl: '',
-        email: '',
-        description: '',
-      }}
 
-      //The validationSchema prop is set to validate, which enforces the defined validation rules on the form inputs.
-      validationSchema={validate}
-      onSubmit={(values, { resetForm }) => {
-        handleOnSubmit(values);
-        resetForm({ values: '' });
-      }}
-    >
-      {formik => (
-        <div className={styles.container}>
-          <h1 className={styles.title}>Add Centre</h1>
-          <Form className={styles.form}>
-            <TextField id="addName" label="Name" name="name" type="text" />
-            <TextField id="addNumber" label="Phone Number" name="mobileNumber" type="text" />
-            <TextField id="addAddress" label="Address" name="address" type="text" />
-            <TextField id="addCity" label="City" name="city" type="text" />
-            <TextField id="addPincode" label="Pincode" name="pincode" type="text" />
-            <TextField id="addImageUrl" label="Image URL" name="imgUrl" type="text" />
-            <TextField id="addEmail" label="Email" name="email" type="email" />
-            <TextField id="addCentreDescription" label="Description" name="description" type="textarea" />
-            <ErrorMessage name="description" component="div" className={styles.error} />
-            <button className={styles.button} id="addButton" type="submit">
-              Add Centre
-            </button>
-          </Form>
-        </div>
-      )}
-    </Formik>
-  );
+    return (
+        <Formik
+        //The enableReinitialize prop is set to true to allow the form to be reinitialized with the initial values whenever they change.
+            enableReinitialize
+            initialValues={{
+                name: props.data.name,
+                mobileNumber: props.data.mobileNumber,
+                address: props.data.address,
+                imgUrl: props.data.imgUrl,
+                email: props.data.email,
+                description: props.data.description
+            }}
+            validationSchema={validate}
+            onSubmit={
+                (values) => {
+                    handleOnSubmit(values);
+                }
+            }
+        >
+            {formik => (
+                <div className={styles.container}>
+                    <h1 className="my-4 font-weight-bold-display-4">Edit Center</h1>
+                    <Form>
+                        <TextField id="editName" placeholder='Name' name="name" type="text" />
+                        <TextField id="editNumber" placeholder="Enter the phone number" name="mobileNumber" type="text" />
+                        <TextField id="editAddress" placeholder="Enter the address" name="address" type="text" />
+                        <TextField id="editImageUrl" placeholder="Enter the image url" name="imgUrl" type="text" />
+                        <TextField id="editEmail" placeholder="Enter the email id" name="email" type="email" />
+                        <TextField id="editCentreDescription" placeholder="Give Description" name="description" type="textarea" />
+                        <br></br>
+                        <button id='updateButton'className="btn btn-dark mt-3" type="submit">update</button>
+                    </Form>
+                    <br />
+                </div>
+            )}
+        </Formik>
+    )
+}
+export default EditCentreForm;
+
+
+
+
+
+
+
+/*import React from "react";
+import { Formik, Form } from 'formik';
+import { TextField } from "./TextField";
+import * as Yup from 'yup';
+import styles from './EditCentreForm.module.css';
+import {editCenter} from '../../../api/myaxios';
+function EditCentreForm(props) {
+    const id = props.data.serviceCenterId;
+
+    //The editCenter function is imported from the '../../../api/myaxios' module, 
+    //which is likely used for making an HTTP request to edit/update a service center.
+    const editURL = `editServiceCenter/${id}`;
+    
+    //A validate object is created using the Yup library to define the form validation rules for each input field in the form. 
+    const validate = Yup.object({
+        name: Yup.string().max(25, 'Must be 15 characters or less')
+            .required('Required'),
+        mobileNumber: Yup.string().required('Required').matches("^[0-9]{10}$", 'Phone number is not valid'),
+        address: Yup.string().max(100, 'Must be 100 characters or less').required('Required'),
+        imageURL: Yup.string().url('Invalid URL'),
+        email: Yup.string()
+            .email('Email is invalid')
+            .required('Required'),
+        description: Yup.string().max(200, 'Must be 200 characters or less').required('Required')
+    });
+
+    //It calls the editCenter function with the form values and the editURL 
+    //(constructed using the service center's ID) to make an HTTP PUT request to update the service center details.
+    const handleOnSubmit = async (value) => {
+        try {
+            const res = await editCenter(value,editURL);
+
+            //If the update is successful, it stores the updated service center data in the local storage 
+            localStorage.setItem('data',JSON.stringify(res.data));
+            props.getCardtoEdit();
+            alert('Updated Sucessfully');
+            window.location.replace("/admin/home");
+        } catch (err) {
+            alert("Error while updating")
+        }
+    }
+
+    return (
+        <Formik
+        //The enableReinitialize prop is set to true to allow the form to be reinitialized with the initial values whenever they change.
+            enableReinitialize
+            initialValues={{
+                name: props.data.name,
+                mobileNumber: props.data.mobileNumber,
+                address: props.data.address,
+                imgUrl: props.data.imgUrl,
+                email: props.data.email,
+                description: props.data.description
+            }}
+            validationSchema={validate}
+            onSubmit={
+                (values) => {
+                    handleOnSubmit(values);
+                }
+            }
+        >
+            {formik => (
+                <div className={styles.container}>
+                    <h1 className="my-4 font-weight-bold-display-4">Edit Center</h1>
+                    <Form>
+                        <TextField id="editName" placeholder='Name' name="name" type="text" />
+                        <TextField id="editNumber" placeholder="Enter the phone number" name="mobileNumber" type="text" />
+                        <TextField id="editAddress" placeholder="Enter the address" name="address" type="text" />
+                        <TextField id="editImageUrl" placeholder="Enter the image url" name="imgUrl" type="text" />
+                        <TextField id="editEmail" placeholder="Enter the email id" name="email" type="email" />
+                        <TextField id="editCentreDescription" placeholder="Give Description" name="description" type="textarea" />
+                        <br></br>
+                        <button id='updateButton'className="btn btn-dark mt-3" type="submit">update</button>
+                    </Form>
+                    <br />
+                </div>
+            )}
+        </Formik>
+    )
 }
 
-export default AdminAddCentreForm;
-
-/*import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import { TextField } from './TextField';
-import * as Yup from 'yup';
-import axios from 'axios';
-import styles from './AdminAddCentreForm.module.css';
-import { useNavigate } from 'react-router-dom';
-import * as myaxios from '../../../api/myaxios';
-
-function AdminAddCentreForm() {
-
-  const navigate = useNavigate();
-
-  //Yup library to define the form validation rules for each input field in the form.
-  // These rules specify the required fields, max length, valid email format, valid phone number format, etc.
-
-  const validate = Yup.object({
-    name: Yup.string().max(25, 'Should be less than 15 characters').required('Name is required'),
-    mobileNumber: Yup.string()
-      .matches("^[0-9]{10}$", 'Phone number is not valid')
-      .required('Required'),
-    address: Yup.string().max(50, 'Should be less than 50 characters').required('Required'),
-    city: Yup.string().required('City is a required field').max(25, 'Should be less than 25 characters'),
-    pincode: Yup.string().max(6, 'Invalid Pincode').min(6, 'Invalid Pincode').required('Pincode is a required field'),
-    imgUrl: Yup.string().url('Invalid URL'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    description: Yup.string().max(100, 'Should not exceed 100 characters'),
-  });
-
-  //make an HTTP POST request to the server, presumably to add a new service center with the form data (val).
-  async function handleOnSubmit(val) {
-    try {
-      const res = await myaxios.addCenter(val);
-      alert('Centre Added Successfully');
-      navigate('/admin/home');
-    } catch (error) {
-      console.log(error);
-      alert('Add Centre Failed');
-    }
-  }
-// component wraps the form and handles form state, validation, and form submission logic.
-  return (
-    <Formik
-      initialValues={{
-        name: '',
-        mobileNumber: '',
-        address: '',
-        city: '',
-        pincode: '',
-        imgUrl: '',
-        email: '',
-        description: '',
-      }}
-
-      //The validationSchema prop is set to validate, which enforces the defined validation rules on the form inputs.
-      validationSchema={validate}
-      onSubmit={(values, { resetForm }) => {
-        handleOnSubmit(values);
-        resetForm({ values: '' });
-      }}
-    >
-      {formik => (
-        <div className={styles.container}>
-          <h1 className={styles.title}>Add Centre</h1>
-          <Form className={styles.form}>
-            <TextField id="addName" label="Name" name="name" type="text" />
-            <TextField id="addNumber" label="Phone Number" name="mobileNumber" type="text" />
-            <TextField id="addAddress" label="Address" name="address" type="text" />
-            <TextField id="addCity" label="City" name="city" type="text" />
-            <TextField id="addPincode" label="Pincode" name="pincode" type="text" />
-            <TextField id="addImageUrl" label="Image URL" name="imgUrl" type="text" />
-            <TextField id="addEmail" label="Email" name="email" type="email" />
-            <TextField id="addCentreDescription" label="Description" name="description" type="textarea" />
-            <ErrorMessage name="description" component="div" className={styles.error} />
-            <button className={styles.button} id="addButton" type="submit">
-              Add Centre
-            </button>
-          </Form>
-        </div>
-      )}
-    </Formik>
-  );
-}
-
-export default AdminAddCentreForm; */
-
-
+export default EditCentreForm;*/
