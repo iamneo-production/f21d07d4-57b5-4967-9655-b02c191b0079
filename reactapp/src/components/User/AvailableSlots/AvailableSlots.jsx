@@ -69,4 +69,5 @@ function AvailableSlots(props){
   )
 }
 
+
 export default AvailableSlots;
