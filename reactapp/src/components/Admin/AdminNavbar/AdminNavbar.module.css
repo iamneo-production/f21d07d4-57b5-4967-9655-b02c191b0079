@@ -50,4 +50,165 @@
     font-size: 28px;
   }
   
+
+
+/*
+.navbar {
+    background-color: #4d4dff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: auto;
+    text-decoration: none;
+  }
+  
+  .navItem {
+    margin: 0 10px;
+  }
+  
+  .navLink {
+    color: #ffffff !important;
+    font-size: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navLinkText {
+    margin-left: 5px;
+  }
+  
+  .navLink:hover {
+    color: #ff4081;
+  }
+  
+  .logout {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutText {
+    margin-right: 5px;
+    font-size: 25px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .logoutIcon {
+    color: #ffffff;
+    font-size: 28px;
+  }
+.navbar {
+    background-color: #4d4dff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: auto;
+    text-decoration: none;
+  }
+  
+  .navItem {
+    margin: 0 10px;
+  }
+  
+  .navLink {
+    color: #ffffff !important;
+    font-size: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navLinkText {
+    margin-left: 5px;
+  }
+  
+  .navLink:hover {
+    color: #ff4081;
+  }
+  
+  .logout {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutText {
+    margin-right: 5px;
+    font-size: 25px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .logoutIcon {
+    color: #ffffff;
+    font-size: 28px;
+  }
+  
+
+.navbar {
+    background-color: #4d4dff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: auto;
+    text-decoration: none;
+  }
+  
+  .navItem {
+    margin: 0 10px;
+  }
+  
+  .navLink {
+    color: #ffffff !important;
+    font-size: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navLinkText {
+    margin-left: 5px;
+  }
+  
+  .navLink:hover {
+    color: #ff4081;
+  }
+  
+  .logout {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutText {
+    margin-right: 5px;
+    font-size: 25px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .logoutIcon {
+    color: #ffffff;
+    font-size: 28px;
+  }
+  
+*/
+  
   
